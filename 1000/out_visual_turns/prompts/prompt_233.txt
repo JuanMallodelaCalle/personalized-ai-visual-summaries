@@ -1,0 +1,298 @@
+You are a visual storytelling expert. Read one dialogue with two detailed character profiles. Your task is to identify the most visually meaningful moments and write cinematic, ultra-realistic image prompts for each one. Think as if you are storyboarding a short film — each image must capture a self-contained visual scene.
+
+Take your time reading and reasoning through the content. Quality and depth matter more than brevity.
+
+---
+
+WHAT YOU RECEIVE
+- dialogue_id
+- profiles:
+  - Each has:
+    - profile_struct (age, gender_identity, sexual_orientation, ethnicity, nationality, residence_country)
+    - profile_narrative (personal_data, visual_appearance, environment, personality_attitudes, other_details)
+    - profile_prompt (portrait prompt already defining the character's baseline appearance)
+- dialogue: list of turns with persona_id and text_X fields ("text_1", "text_2", ...)
+
+---
+
+WHAT YOU MUST OUTPUT
+Return ONLY the following JSON:
+{
+  "dialogue_id": "<id>",
+  "visual_turns": [
+    {
+      "image_id": "<dialogue_id>_img_1",
+      "dialogue_indices": ["text_1","text_2"],      // exact ids from the dialogue; group consecutive lines if they form one scene
+      "speaker_focus": "A" | "B" | "both",          // who is visually active or expressive in this image
+      "scene_type": "shared" | "memory" | "imagined" | "cutaway" | "montage",
+      "prompt": "<single, self-contained photorealistic prompt, ≤150 words>"
+    }
+  ]
+}
+
+---
+
+YOUR TASK
+Create a new structured field called "visual_turns" that identifies which parts of the dialogue should be represented visually (as standalone image scenes).
+
+---
+
+SELECTION & STRUCTURING RULES
+- Choose all turns that add clear **visual or emotional meaning** (location, gesture, action, expression, emotion, visual change).
+- Always include one early **shared** scene to ground both characters in the setting (or split-screen if remote).
+- Merge consecutive lines when they show one continuous moment; include all their ids in dialogue_indices.
+- Mark past scenes as 'memory'.
+- Include visually rich or symbolic details even if brief.
+- Typically 5-12 visual_turns per dialogue, but include any scene that adds visual meaning.
+- Do not omit expressive, emotional, or dynamic lines.
+- The resulting images should allow a viewer to understand the conversation visually.
+
+---
+
+SCENE_TYPE DICTIONARY (use ONLY these labels)
+- shared: the ongoing present setting of the dialogue or its establishing shot (or split-screen if remote).
+- memory: a recollection or past event from a speaker's life (calm or vivid).
+- imagined: a non-real or hypothetical scene (dream, fantasy, or what-if).
+- cutaway: a brief insert of an object, location, or visual metaphor relevant to the dialogue.
+- montage: a short visual sequence of mini-moments showing progress or passage of time.
+
+---
+
+SPEAKER_FOCUS
+- “A” if only A is visually central or active.
+- “B” if only B is visually central or active.
+- “both” if both characters appear or interact visually.
+(Use “both” only if both are clearly visible or expressive in the same scene.)
+
+---
+
+CONSISTENCY WITH PROFILE PORTRAITS (CRUCIAL)
+- Final rendering will combine: profile_prompt_A/profile_prompt_B (per speaker_focus) + your scene prompt.
+- DO NOT restate base traits (age, ethnicity, gender_identity, etc.) that are already in the profile_prompt.
+- Refer to characters **by name** (e.g., “Nikos” or “Alexei”) for clarity.
+- Focus on what changes dynamically: pose, gesture, emotion, temporary outfit, props, environment, lighting, composition, and mood.
+- Keep everything consistent with each character's profile_struct and narrative.
+
+---
+
+CULTURAL/LEGAL ATTIRE (MANDATORY WHEN APPLICABLE)
+- If gender_identity is "female" AND residence_country is Iran → hijab & modest clothing (hair not visible).
+- If gender_identity is "female" AND residence_country is Afghanistan → niqab/burka or at least hijab.
+- If gender_identity is "female" AND residence_country is Saudi Arabia → abaya with headscarf (public setting).
+(Do NOT apply these outside those countries. If hair was described elsewhere, phrase as “hair tucked under a hijab/headscarf.”)
+
+---
+
+PROMPT CONTENT REQUIREMENTS (for each visual_turn)
+- Third-person cinematic description (avoid bullet lists or enumeration).
+- Start naturally, using names or contextual cues, not lists of traits.
+- Ultra realistic, photographic, cinematic; resolution target 1024x1024, square (1:1).
+- Neutral or soft lighting unless the scene implies otherwise.
+- Explicitly reflect **speaker_focus** in composition (who is centered, expressive, or dominant).
+- Include: shot type (portrait, medium, wide), character posture, facial expression, relevant clothing or props, environment hints, and mood.
+- Background: softly blurred but consistent with their environment and dialogue.
+- Minors (<18): strictly neutral, non-sexualized.
+- Prompts will be used directly for image generation, combined with each speaker's profile_prompt according to speaker_focus.
+
+---
+
+KNOWN PAST MISTAKES TO AVOID
+- Do not miss unique or memorable visual content (e.g., scorpion hunting, ballroom dancing).
+- Do not use "both" as speaker_focus unless both are visually active or expressive.
+- Do not fail to mark "memory" for clearly past or distinct temporal scenes.
+- Do not split connected utterances that belong to the same visual moment.
+
+---
+
+EXAMPLE OUTPUT SHAPE
+{
+  "dialogue_id": "persona_chat_7700",
+  "visual_turns": [
+    {
+      "image_id": "persona_chat_7700_img_1",
+      "dialogue_indices": ["text_1","text_2"],
+      "speaker_focus": "both",
+      "scene_type": "shared",
+      "prompt": "..."
+    },
+    {
+      "image_id": "persona_chat_7700_img_2",
+      "dialogue_indices": ["text_5","text_6","text_7"],
+      "speaker_focus": "B",
+      "scene_type": "memory",
+      "prompt": "..."
+    }
+    ...
+  ]
+}
+
+
+---
+
+{
+  "dialogue_id": "persona_chat_8310",
+  "profiles": {
+    "A": {
+      "profile_struct": {
+        "age": 59,
+        "gender_identity": "female",
+        "sexual_orientation": "heterosexual",
+        "ethnicity": "North African & Middle Eastern (MENA) (Egypt, Morocco, Saudi Arabia, Iran, etc.)",
+        "nationality": "United States of America",
+        "residence_country": "United States of America"
+      },
+      "profile_narrative": {
+        "personal_data": [
+          "My name is Laleh Farahani and I am a 59-year-old woman of Iranian descent who holds American citizenship.",
+          "I live on the west coast of the United States, where I have settled into a relaxed lifestyle near the ocean.",
+          "I work part-time in event catering, often picking up drinks for gatherings and social functions.",
+          "In my free time I spend hours indulging in comfort foods and binge-watching television series.",
+          "I am currently single and committed to improving my health through gradual lifestyle changes."
+        ],
+        "visual_appearance": [
+          "I have thick, curly salt-and-pepper hair that I often pull back into a loose bun when I’m at home.",
+          "My skin has an olive tone reflecting my Middle Eastern heritage, and I have warm brown eyes that light up when I laugh.",
+          "I wear rectangular reading glasses with dark tortoiseshell frames, which I find both practical and stylish.",
+          "I favor comfortable, roomy clothing like soft sweaters and leggings, but I always add a quirky accessory like a colorful scarf.",
+          "I am on the shorter side with a curvy build that I’ve begun reshaping through portion control and light exercise."
+        ],
+        "environment": [
+          "I live in a cozy one-bedroom apartment overlooking the Pacific Ocean, with a small balcony where I sip iced tea while watching the waves.",
+          "My living room is dominated by a large flat-screen TV and a plush couch that I practically live on during my binge-watching marathons.",
+          "The kitchen counters are always strewn with snack bowls and empty soda cans, evidence of my enthusiastic snacking habits.",
+          "I keep a mini bar cart nearby stocked with beers and mixers, ready for impromptu karaoke nights with friends.",
+          "A stack of workout DVDs and a set of resistance bands lurk in the corner as reminders of my ongoing effort to get in shape."
+        ],
+        "personality_attitudes": [
+          "I’m a laid-back extrovert who loves a good laugh, even if it means pulling a harmless prank with a whoopee cushion now and then.",
+          "I’m self-deprecating but kind-hearted, often joking about my ‘gross’ habits to put others at ease.",
+          "I value camaraderie and genuine connections, and I’m always happy to pick up drinks or lift someone’s spirits.",
+          "Although I can be indulgent in my eating and TV habits, I’m committed to making steady progress toward healthier routines.",
+          "I believe life is too short to take too seriously, so I approach every evening out as an opportunity to make memories."
+        ],
+        "other_details": [
+          "I have a collection of novelty whoopee cushions that I break out for quick pranks whenever the moment feels right.",
+          "My go-to karaoke song is an 80s power ballad that always gets the crowd singing along at the bar.",
+          "I have a habit of narrating cooking shows out loud, even when I’m microwaving frozen meals late at night.",
+          "Every Friday, I send out a group text for an informal bar meet-up and I’m famous for bringing everyone’s first round of drinks.",
+          "I once attempted to learn basic Spanish through a cooking class, but I reverted to English when the recipes got too complicated."
+        ]
+      },
+      "profile_prompt": "59-year-old female, North African & Middle Eastern ethnicity, shoulders-up square portrait, neutral soft lighting, photorealistic with sharp facial focus. She has thick, curly salt-and-pepper hair loosely pulled into a bun, olive-toned skin and warm brown eyes that crinkle with a friendly smile. Rectangular dark tortoiseshell reading glasses perch on her nose, and she wears a cozy sweater layered with a colorful scarf draped casually around her shoulders. In the softly blurred background a hint of a sunny balcony railing and the Pacific Ocean’s waves can be seen."
+    },
+    "B": {
+      "profile_struct": {
+        "age": 35,
+        "gender_identity": "female",
+        "sexual_orientation": "gay/lesbian",
+        "ethnicity": "North American (USA, Canada, Greenland, etc.)",
+        "nationality": "United States of America",
+        "residence_country": "United States of America"
+      },
+      "profile_narrative": {
+        "personal_data": [
+          "My name is Emma Carter, and I’m a 35-year-old female teacher and sports coach in the United States of America.",
+          "I hold American citizenship and live in a suburban community not far from the city limits.",
+          "I have a bachelor’s degree in elementary education and additional certification in girls’ sports coaching.",
+          "I am single and deeply invested in my work with sixth graders and in coaching the girls’ volleyball team after school.",
+          "Outside of school hours, I host karaoke nights at a local bar every Friday to blend my love of music with community engagement."
+        ],
+        "visual_appearance": [
+          "I have straight, shoulder-length blonde hair that I wear down or pull into a simple ponytail during practice sessions.",
+          "My skin is fair with a light sprinkling of freckles across my cheeks and the bridge of my nose.",
+          "I often wear sporty-rimmed glasses when grading papers, then switch to sleeker frames for my karaoke performances.",
+          "My typical attire includes athletic leggings or track pants with a team polo when coaching, and casual jeans or a flowy blouse for evenings out.",
+          "I have an athletic build and average height for a woman, with toned arms from years of demonstrating drills."
+        ],
+        "environment": [
+          "I live in a modest brick house with a small backyard where I hang laundry and host weekend barbecues for friends.",
+          "My classroom is decorated with student artwork, motivational posters, and neatly labeled bins of supplies.",
+          "At the community center gym, I always have my whistle, a set of stopwatches, and a stash of volleyballs in my coaching bag.",
+          "On bar nights, I set up on a small stage under colored lights, complete with a microphone stand and a ready playlist of karaoke tracks.",
+          "My kitchen counter often holds a bowl of fruit—apples and pears—despite my mild allergy to certain varieties."
+        ],
+        "personality_attitudes": [
+          "I’m energetic and nurturing, finding deep satisfaction in helping young students learn and grow.",
+          "I have a playful side that comes out during karaoke, where I belt out songs with enthusiastic abandon.",
+          "I’m patient by nature, though I’m honest when my sixth graders push boundaries with pranks or volleyball antics.",
+          "I value community involvement, which is why I combine teaching, coaching, and social evenings into a cohesive lifestyle.",
+          "I maintain a pragmatic approach to health, enjoying fresh fruit despite occasional allergic reactions and balancing treats with nutritious meals."
+        ],
+        "other_details": [
+          "I carry a detailed coaching planner everywhere, filled with practice drills, game strategies, and motivational quotes.",
+          "I challenge my students to crossword puzzles during downtime to keep their critical thinking sharp.",
+          "I crochet small matching team scarves as end-of-season gifts for my volleyball players.",
+          "My signature rallying cry is “Alright, team!” which I use to motivate both students and karaoke participants alike.",
+          "I once organized a school talent show fundraiser where I performed a duet with the principal on stage."
+        ]
+      },
+      "profile_prompt": "35-year-old female, North American ethnicity, shoulders-up square portrait, neutral soft lighting, photorealistic with sharp facial focus. She has straight shoulder-length blonde hair tied in a low ponytail, fair skin dotted with a light sprinkling of freckles, and sporty-rimmed glasses framing her attentive eyes. She wears a team polo shirt with a whistle on a lanyard around her neck, suggesting her role as a coach. The softly blurred background offers a subtle suggestion of a gym environment with an out-of-focus volleyball net and stopwatches."
+    }
+  },
+  "dialogue": [
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_1": "Are you going out tonight?"
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_2": "Hi. What is with kids these days? I am fun but they do not agree."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_3": "It always a nice time old or not."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_4": "My sixth graders are really getting out of hand lately."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_5": "Well I cant party with kids but nice job it seems."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_6": "I coach too but the girls throw their volley balls at me some times. On purpose!"
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_7": "Are whoopee cushions still fun?"
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_8": "No. It reminds me of all the pranks they pull on me. Do you like kids?"
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_9": "Yes but throw the ball at them?"
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_10": "I am too nice. What other teacher holds karaoke friday parties?"
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_11": "I am too fat to move I am slimming down now."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_12": "Good for you. Try some apples, I am allergic but eat the ones they give me."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_13": "Yea fine I will come sing really loud."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_14": "Thank goodness. We do crosswords and crochet at the same time."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_15": "I will bring beer for when the kids leave."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_16": "Sounds like a plan. We can watch the football game when they are gone too."
+    }
+  ]
+}

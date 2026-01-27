@@ -1,0 +1,41 @@
+{
+  "persona_prompt_A": "59-year-old female, North African & Middle Eastern ethnicity, shoulders-up square portrait, neutral soft lighting, photorealistic with sharp facial focus. She has thick, curly salt-and-pepper hair loosely pulled into a bun, olive-toned skin and warm brown eyes that crinkle with a friendly smile. Rectangular dark tortoiseshell reading glasses perch on her nose, and she wears a cozy sweater layered with a colorful scarf draped casually around her shoulders. In the softly blurred background a hint of a sunny balcony railing and the Pacific Ocean’s waves can be seen.",
+  "persona_prompt_B": "35-year-old female, North American ethnicity, shoulders-up square portrait, neutral soft lighting, photorealistic with sharp facial focus. She has straight shoulder-length blonde hair tied in a low ponytail, fair skin dotted with a light sprinkling of freckles, and sporty-rimmed glasses framing her attentive eyes. She wears a team polo shirt with a whistle on a lanyard around her neck, suggesting her role as a coach. The softly blurred background offers a subtle suggestion of a gym environment with an out-of-focus volleyball net and stopwatches.",
+  "images": [
+    {
+      "image_id": "persona_chat_8310_img_1",
+      "speaker_focus": "both",
+      "prompt": "A cinematic split-screen medium shot shows Laleh Farahani curled up on her plush couch, phone in hand, wearing her cozy sweater and colorful scarf with tortoiseshell reading glasses perched on her nose. Behind her, the softly blurred sunlit Pacific Ocean peeks over a balcony railing. On the opposite side, Emma Carter stands in her suburban kitchen, casual blouse and sporty-rimmed glasses, mid-shrug with a half-smile as she grips her smartphone. Warm, neutral lighting ties both spaces together, conveying their lively video-call banter."
+    },
+    {
+      "image_id": "persona_chat_8310_img_2",
+      "speaker_focus": "B",
+      "prompt": "In a softly lit community gym, Emma Carter hunches slightly in her team polo and whistle lanyard as a volleyball sails toward her shoulder. The net and scattered balls lie in gentle blur behind her while her face tightens in amused disbelief. Photorealistic medium shot captures the ball frozen mid-air and Emma’s expressive reaction to her sixth graders’ mischievous prank."
+    },
+    {
+      "image_id": "persona_chat_8310_img_3",
+      "speaker_focus": "A",
+      "prompt": "Laleh Farahani leans over a side table in her airy living room, sweeping aside snack bowls to reveal a bright red whoopee cushion. Her olive-toned hands twitch as she picks it up with a playful grin, curly salt-and-pepper hair loosely tied in a bun and her colorful scarf draping softly in the background. Warm afternoon light filters in through a nearby window."
+    },
+    {
+      "image_id": "persona_chat_8310_img_4",
+      "speaker_focus": "B",
+      "prompt": "Emma Carter stands centre-stage under muted colored lights in a cozy neighborhood bar, singing into a microphone with enthusiastic abandon. Her low ponytail swings as she belts out the chorus, crochet hook tucked into her back pocket and a small stack of yarn balls at her feet. The bar crowd recedes into a soft blur, capturing her signature Friday night karaoke energy."
+    },
+    {
+      "image_id": "persona_chat_8310_img_5",
+      "speaker_focus": "A",
+      "prompt": "Early morning sunlight spills across Laleh’s living room as she stands in leggings and a fitted tee, looping a resistance band around her thighs. She bends into a gentle lunge by a stack of workout DVDs and colorful resistance bands, determination in her warm brown eyes. The couch and mini bar cart blur softly behind, hinting at her journey toward healthier routines."
+    },
+    {
+      "image_id": "persona_chat_8310_img_6",
+      "speaker_focus": "B",
+      "prompt": "Emma Carter leans against her kitchen counter holding a shiny red apple with a playful grimace. Her sporty-rimmed glasses catch the light over her freckled cheeks as an open bowl of mixed fruit sits beside a clipboard of coaching drills. The suburban kitchen counters and laundry drying rack blur gently in the background."
+    },
+    {
+      "image_id": "persona_chat_8310_img_7",
+      "speaker_focus": "both",
+      "prompt": "A medium-shot in a warm neighborhood bar shows Laleh Farahani perched on a high stool with a cold beer in hand, her scarf draped casually and a whoopee cushion tucked beside her. Beside her, Emma Carter crochets a small team scarf with a ball of yarn on the table, a half-solved crossword resting against her mic stand. Colored stage lights dance overhead, and a muted football plays on a TV in the softly blurred background as the two friends prepare for a fun Friday night."
+    }
+  ]
+}
