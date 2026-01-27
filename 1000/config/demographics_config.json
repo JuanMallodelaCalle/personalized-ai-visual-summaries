@@ -1,0 +1,115 @@
+{
+  "seed": 42,
+
+  "ethnicity": {
+    "South Asian (India, Pakistan, Sri Lanka, Nepal, etc.)": 0.10,
+    "East Asian (China, Korea, Japan, Mongolia, etc.)": 0.10,
+    "Southeast Asian (Vietnam, Thailand, Philippines, Indonesia, etc.)": 0.10,
+    "Sub-Saharan African (Nigeria, Kenya, Ethiopia, South Africa, etc.)": 0.10,
+    "North African & Middle Eastern (MENA) (Egypt, Morocco, Saudi Arabia, Iran, etc.)": 0.10,
+    "European (Northern & Eastern) (Germany, Poland, Sweden, Russia, etc.)": 0.10,
+    "European (Southern / Mediterranean) (Italy, Spain, Greece, Portugal, etc.)": 0.10,
+    "North American (USA, Canada, Greenland, etc.)": 0.10,
+    "Central & South American (Mexico, Peru, Bolivia, Chile, etc.)": 0.10,
+    "Oceanian / Pacific Islander (Fiji, Samoa, Papua New Guinea, Hawaii, etc.)": 0.10
+  },
+
+  "age_group": {
+    "<18": 0.10,
+    "18-29": 0.25,
+    "30-39": 0.20,
+    "40-49": 0.15,
+    "50-59": 0.15,
+    "60+": 0.15
+  },
+
+  "gender_identity": {
+    "male": 0.47,
+    "female": 0.47,
+    "non-binary": 0.03,
+    "transgender male": 0.015,
+    "transgender female": 0.015
+  },
+
+  "sexual_orientation": {
+    "heterosexual": 0.82,
+    "gay/lesbian": 0.05,
+    "bisexual": 0.07,
+    "asexual": 0.02,
+    "pansexual": 0.02,
+    "queer/other": 0.02
+  },
+
+  "residence_migration_ratio": {
+    "same_as_nationality": 0.75,
+    "different_country": 0.25
+  },
+
+  "mixed_ancestry_trigger": {
+    "residence_differs_from_nationality": 0.50,
+    "high_mix_country_same_residence": 0.25,
+    "unusual_ethnicity_nationality_combo": 0.00,
+    "high_mix_countries": [
+      "United States of America",
+      "Canada",
+      "United Kingdom",
+      "France",
+      "Germany",
+      "Spain",
+      "Italy",
+      "Australia",
+      "New Zealand",
+      "United Arab Emirates",
+      "Qatar",
+      "Kuwait",
+      "Saudi Arabia",
+      "Singapore",
+      "Brazil",
+      "Argentina",
+      "Mexico",
+      "South Africa"
+    ]
+  },
+
+  "by_ethnicity_nationality": {
+    "Sub-Saharan African (Nigeria, Kenya, Ethiopia, South Africa, etc.)": "M49: Sub-Saharan Africa",
+    "North African & Middle Eastern (MENA) (Egypt, Morocco, Saudi Arabia, Iran, etc.)": "M49: Northern Africa + Western Asia",
+    "European (Southern / Mediterranean) (Italy, Spain, Greece, Portugal, etc.)": "M49: Southern Europe",
+    "European (Northern & Eastern) (Germany, Poland, Sweden, Russia, etc.)": "M49: Northern Europe + Eastern Europe",
+    "South Asian (India, Pakistan, Sri Lanka, Nepal, etc.)": "M49: Southern Asia",
+    "East Asian (China, Korea, Japan, Mongolia, etc.)": "M49: Eastern Asia",
+    "Southeast Asian (Vietnam, Thailand, Philippines, Indonesia, etc.)": "M49: South-Eastern Asia",
+    "North American (USA, Canada, Greenland, etc.)": "M49: Northern America",
+    "Central & South American (Mexico, Peru, Bolivia, Chile, etc.)": "M49: Latin America and the Caribbean",
+    "Oceanian / Pacific Islander (Fiji, Samoa, Papua New Guinea, Hawaii, etc.)": "M49: Oceania"
+  },
+
+  "residence_pool_global": [
+    "United States of America",
+    "Canada",
+    "Spain",
+    "France",
+    "Germany",
+    "Italy",
+    "Portugal",
+    "United Kingdom",
+    "Netherlands",
+    "Sweden",
+    "Poland",
+    "Australia",
+    "New Zealand",
+    "Japan",
+    "South Korea",
+    "United Arab Emirates",
+    "Saudi Arabia",
+    "Brazil",
+    "Mexico",
+    "Argentina",
+    "Chile",
+    "South Africa",
+    "Kenya",
+    "Nigeria",
+    "India",
+    "Singapore"
+  ]
+}

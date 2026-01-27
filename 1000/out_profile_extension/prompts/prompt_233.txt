@@ -1,0 +1,261 @@
+You are an expert in psychological inference and character profiling.
+
+Your task is to extend the personality profiles of both speakers based on a single dialogue entry. The input below contains everything you need to perform a deep and creative expansion of each character's persona. 
+
+Important constraints (read carefully):
+- Do NOT infer attributes from the other speaker. Only use the character's own lines and original persona.
+- If an attribute is NOT inferable, you MUST use the provided FALLBACK VALUES for that character.
+- However, if a fallback value would directly CONTRADICT the character's own content (e.g., years of full-time work vs. age 14), you MUST ADJUST the fallback to the nearest coherent value that preserves the original information (adjust the fallback, not the original dialogue/persona).
+- Keep labels clean and consistent. Avoid stereotypes.
+
+Inference-first rule (CRITICAL):
+- For EACH attribute in profile_struct, attempt to INFER it strictly from the character's OWN content (their persona sentences and their own spoken lines).
+- “Inferable” means there is clear, direct evidence or an unambiguous implication in the character's own content.
+- NEVER fabricate values outside the fallback when not inferable. Do not use “unknown”, “N/A”, ranges, or multiple options.
+- Nationality and residence_country: only use an inferred country when it's explicitly stated or unambiguously implied in the character's own content. Otherwise, use the EXACT fallback value.
+- Ethnicity: choose from the allowed labels only when clearly supported by the character's own content; otherwise, use the EXACT fallback label.
+- Gender identity and sexual_orientation: only infer if explicitly stated or unambiguously implied; otherwise, use the EXACT fallback (with the minors rule below).
+
+Nationality vs. Residence interpretation (HARD RULE):
+- Employment, league membership (e.g., NBA), schooling, or current address imply RESIDENCE only.
+- Change NATIONALITY only when the character explicitly self-identifies it (e.g., “I am American”, “I'm from Russia”, “born in X”, “my passport is X”).
+- Otherwise, KEEP the fallback nationality exactly.
+
+Minors rule (MANDATORY):
+- If the final AGE < 13:
+  - gender_identity MUST be either "male" or "female" (no non-binary or transgender labels below 13).
+  - sexual_orientation MUST be "unspecified".
+  - The narrative MUST avoid adult topics (e.g., long-term employment, explicit romance). Keep school-, family-, and hobby-centered contexts.
+- If AGE is 13-17:
+  - All gender_identity labels are allowed, but keep content age-appropriate.
+  - sexual_orientation may be inferred cautiously if the text genuinely supports it; otherwise, use fallback. Do NOT sexualize minors.
+
+Post-adjustment consistency pass (MANDATORY):
+- If you adjusted AGE to ensure coherence, RE-APPLY the minors rule above.
+- If final AGE ≥ 13, you MUST NOT output "unspecified" for sexual_orientation.
+  * Prefer an orientation clearly supported by the character's own content.
+  * Otherwise use the fallback orientation; BUT if the fallback is "unspecified", set sexual_orientation to "heterosexual" (unless the character's own content clearly supports another label).
+
+Cultural-religious & context realism (guidance, not stereotypes):
+- In visual_appearance and environment, reflect plausible cues given nationality and/or residence_country (e.g., climate, architecture, common garments, workspaces).
+- When the country has strong religious or cultural norms around dress (e.g., hijab or modest wear), you may include such details ONLY if it fits plausibly with the character's own persona/lines and the narrative tone. Always avoid stereotypes and allow individual variation.
+
+Mixed ancestry in narrative (optional, context-driven):
+- You may enrich the narrative with mixed ancestry ONLY when it makes sense:
+  * The character resides in a country different from nationality and the context suggests close cultural ties; OR
+  * The residence_country is among commonly multicultural destinations (e.g., USA, Canada, UK, France, Germany, Spain, Italy, Australia, New Zealand, UAE, Qatar, Kuwait, Saudi Arabia, Singapore, Brazil, Argentina, Mexico, South Africa).
+- DO NOT fabricate implausible combinations; keep it culturally and migrationally plausible (e.g., Japanese-Spanish in Spain; Filipino-UAE in UAE). This is a narrative nuance; the profile_struct still uses exactly one ethnicity label from the allowed list.
+- Do not change ethnicity merely to mirror residence_country.
+
+What You Receive:
+A single JSON block with:
+- dialogue_id
+- persona: original persona sentences (speaker keys end with _A and _B)
+- dialogue: list of turns with original persona_id and text fields (text_1, text_2, ...)
+
+Speaker mapping:
+- Treat the persona key ending in _A as Speaker "A"
+- Treat the persona key ending in _B as Speaker "B"
+
+You must generate a detailed personality profile using:
+- The character's original persona sentences (you may rephrase or reassign them).
+- The things each character says in the dialogue (do not infer from the other speaker's lines).
+- Contextual clues from the conversation: reactions, behavior, self-descriptions, topics, values, tone, etc.
+Important: You must ignore information about the character that is only mentioned by the other speaker. Only the character's own statements, behaviors, or reactions are valid for inference.
+
+Profile Narrative Sections:
+1. personal_data (Factual biographical sentences only.)
+   - Full name (Choose a culturally plausible name consistent with NATIONALITY; a mixed-ancestry nuance is fine if the narrative supports it. Avoid mismatched names without support.)
+   - Age
+   - Gender identity
+   - Ethnicity
+   - Occupation
+   - Country or city of residence
+   - Relationship status
+   - Education level (optional but recommended)
+
+2. visual_appearance
+   - Hair type and color
+   - Skin tone
+   - Eye color
+   - Facial hair (if any)
+   - Glasses or accessories (and their style)
+   - Typical clothing
+   - Height and body type (optional)
+
+3. environment (Refer to plausible locations consistent with residence_country and city.)
+   - Where and how the character lives (urban/rural, apartment/house, etc.)
+   - Important objects, tools, or thematic items around them
+   - Hints about climate, culture, or geography
+   - Spaces tied to profession or hobbies (lab, kitchen, studio, gym, etc.)
+
+4. personality_attitudes
+   - Core personality traits (e.g. curious, reserved, energetic)
+   - Hobbies and passions
+   - Beliefs, values, or worldview
+   - Social behaviors
+   - Personal routines or goals
+
+5. other_details (optional)
+   - Memorable quirks or behaviors
+   - Catchphrases, expressions, or habits
+   - Backstory fragments or unusual facts
+   - Extra flavor that enriches the character
+
+Allowed labels (STRICT):
+- Ethnicity (choose EXACTLY one of the following labels):
+- South Asian (India, Pakistan, Sri Lanka, Nepal, etc.)\n- East Asian (China, Korea, Japan, Mongolia, etc.)\n- Southeast Asian (Vietnam, Thailand, Philippines, Indonesia, etc.)\n- Sub-Saharan African (Nigeria, Kenya, Ethiopia, South Africa, etc.)\n- North African & Middle Eastern (MENA) (Egypt, Morocco, Saudi Arabia, Iran, etc.)\n- European (Northern & Eastern) (Germany, Poland, Sweden, Russia, etc.)\n- European (Southern / Mediterranean) (Italy, Spain, Greece, Portugal, etc.)\n- North American (USA, Canada, Greenland, etc.)\n- Central & South American (Mexico, Peru, Bolivia, Chile, etc.)\n- Oceanian / Pacific Islander (Fiji, Samoa, Papua New Guinea, Hawaii, etc.)
+
+- Gender identity (choose EXACTLY one):
+- male\n- female\n- non-binary\n- transgender male\n- transgender female
+
+- Sexual orientation (choose EXACTLY one; if AGE<13, it MUST be "unspecified"):
+- heterosexual\n- gay/lesbian\n- bisexual\n- asexual\n- pansexual\n- queer/other\n- unspecified
+(Allowed special value for minors <13: "unspecified")
+
+- Nationality & residence_country:
+  * Must be a SINGLE standard country name (ISO 3166 / UN M49 English short name).
+  * Do NOT output cities, regions, provinces, or multiple values.
+  * If NOT inferable from the character's own content, you MUST set it to EXACTLY the FALLBACK value provided for that character below.
+  * residence_country may differ from nationality.
+
+Coherence rule (MANDATORY):
+- If a fallback conflicts with original content, adjust the fallback to the nearest coherent value (e.g., raise age; swap residence to match schooling/employment context; select a culturally plausible name).
+- DO NOT alter the original dialogue, persona sentences, or keys. Only adjust the fallback-derived attribute to ensure consistency.
+
+Requirements:
+- Each section in each persona must contain at least 5 full sentences, written in first person, non-repetitive, and rich in detail.
+- Preserve the exact dialogue_id and speaker IDs (*_A and *_B) as received.
+- Avoid duplication: every sentence in a profile should add new detail.
+- The output must be suitable for visual generation and storytelling applications.
+
+What You Must Produce (STRICT JSON):
+{{
+  "dialogue_id": "<id>",
+  "profiles": {{
+    "A": {{
+      "profile_struct": {{
+        "age": <integer>,
+        "gender_identity": "<one of the allowed Gender identity labels>",
+        "sexual_orientation": "<one of the allowed Sexual orientation labels or 'unspecified' if AGE<13>",
+        "ethnicity": "<one of the allowed Ethnicity labels>",
+        "nationality": "<country>",
+        "residence_country": "<country>"
+      }},
+      "profile_narrative": {{
+        "personal_data": [ "..." ],
+        "visual_appearance": [ "..." ],
+        "environment": [ "..." ],
+        "personality_attitudes": [ "..." ],
+        "other_details": [ "..." ]
+      }}
+    }},
+    "B": {{ ... same structure ... }}
+  }}
+}}
+
+FALLBACK VALUES FOR SPEAKER A:
+{
+  "age": 59,
+  "gender_identity": "female",
+  "sexual_orientation": "heterosexual",
+  "ethnicity": "North African & Middle Eastern (MENA) (Egypt, Morocco, Saudi Arabia, Iran, etc.)",
+  "nationality": "Iran",
+  "residence_country": "Iran"
+}
+
+FALLBACK VALUES FOR SPEAKER B:
+{
+  "age": 35,
+  "gender_identity": "female",
+  "sexual_orientation": "gay/lesbian",
+  "ethnicity": "North American (USA, Canada, Greenland, etc.)",
+  "nationality": "United States of America",
+  "residence_country": "United States of America"
+}
+
+<INPUT JSON BEGINS — DO NOT ALTER KEYS OR FIELDS>
+{
+  "dialogue_id": "persona_chat_8310",
+  "persona": {
+    "persona_chat_8310_A": [
+      "I pick up the drinks.",
+      "I spend my time eating and watching tv.",
+      "I can be kind of gross.",
+      "I live on the west coast."
+    ],
+    "persona_chat_8310_B": [
+      "Children in elementary shool are an enjoyment to work with.",
+      "I like to go to a bar and sing once a week.",
+      "Some fruit does not agree with me but it is not that bad.",
+      "I have a variety of interests.",
+      "I am in charge of coaching girls sports."
+    ]
+  },
+  "dialogue": [
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_1": "Are you going out tonight?"
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_2": "Hi. What is with kids these days? I am fun but they do not agree."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_3": "It always a nice time old or not."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_4": "My sixth graders are really getting out of hand lately."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_5": "Well I cant party with kids but nice job it seems."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_6": "I coach too but the girls throw their volley balls at me some times. On purpose!"
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_7": "Are whoopee cushions still fun?"
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_8": "No. It reminds me of all the pranks they pull on me. Do you like kids?"
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_9": "Yes but throw the ball at them?"
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_10": "I am too nice. What other teacher holds karaoke friday parties?"
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_11": "I am too fat to move I am slimming down now."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_12": "Good for you. Try some apples, I am allergic but eat the ones they give me."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_13": "Yea fine I will come sing really loud."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_14": "Thank goodness. We do crosswords and crochet at the same time."
+    },
+    {
+      "persona_id": "persona_chat_8310_A",
+      "text_15": "I will bring beer for when the kids leave."
+    },
+    {
+      "persona_id": "persona_chat_8310_B",
+      "text_16": "Sounds like a plan. We can watch the football game when they are gone too."
+    }
+  ]
+}

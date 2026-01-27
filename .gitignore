@@ -14,20 +14,6 @@ Thumbs.db
 # --- Jupyter ---
 .ipynb_checkpoints/
 
-# --- Big outputs / generated artifacts ---
-**/images/
-**/images_with_ids/
-**/dialogue_images/
-
-**/prompts/
-**/response/
-**/response_clean/
-**/response_clean_with_ids/
-**/prompts_images/
-**/moderated_prompts/
-**/moderated_prompts_images/
-**/dialogues/
-
 # logs
 **/generation_log*.txt
 

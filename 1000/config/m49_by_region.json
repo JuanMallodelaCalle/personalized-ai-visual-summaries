@@ -1,0 +1,48 @@
+{
+  "Sub-Saharan Africa": [
+    "Angola","Benin","Botswana","Burkina Faso","Burundi","Cabo Verde","Cameroon","Central African Republic",
+    "Chad","Comoros","Congo","Congo, Democratic Republic of the","Djibouti","Equatorial Guinea","Eritrea","Eswatini",
+    "Ethiopia","Gabon","Gambia","Ghana","Guinea","Guinea-Bissau","Ivory Coast","Kenya","Lesotho","Liberia","Madagascar",
+    "Malawi","Mali","Mauritania","Mauritius","Mozambique","Namibia","Niger","Nigeria","Rwanda","Sao Tome and Principe",
+    "Senegal","Seychelles","Sierra Leone","Somalia","South Africa","South Sudan","Tanzania","Togo","Uganda",
+    "Zambia","Zimbabwe"
+  ],
+  "Northern Africa": [
+    "Algeria","Egypt","Libya","Morocco","Sudan","Tunisia","Western Sahara"
+  ],
+  "Western Asia": [
+    "Armenia","Azerbaijan","Bahrain","Cyprus","Georgia","Iraq","Israel","Jordan","Kuwait","Lebanon","Oman","Palestine",
+    "Qatar","Saudi Arabia","Syrian Arab Republic","Turkey","United Arab Emirates","Yemen","Iran"
+  ],
+  "Southern Europe": [
+    "Albania","Andorra","Bosnia and Herzegovina","Croatia","Greece","Holy See","Italy","Malta","Montenegro","North Macedonia",
+    "Portugal","San Marino","Serbia","Slovenia","Spain"
+  ],
+  "Northern Europe": [
+    "Denmark","Estonia","Finland","Iceland","Ireland","Latvia","Lithuania","Norway","Sweden","United Kingdom"
+  ],
+  "Eastern Europe": [
+    "Belarus","Bulgaria","Czechia","Hungary","Poland","Republic of Moldova","Romania","Russian Federation","Slovakia","Ukraine"
+  ],
+  "Southern Asia": [
+    "Afghanistan","Bangladesh","Bhutan","India","Iran","Maldives","Nepal","Pakistan","Sri Lanka"
+  ],
+  "Eastern Asia": [
+    "China","Japan","Mongolia","Korea, Democratic People's Republic of","Korea, Republic of","Hong Kong","Macao","Taiwan"
+  ],
+  "South-Eastern Asia": [
+    "Brunei Darussalam","Cambodia","Indonesia","Lao People's Democratic Republic","Malaysia","Myanmar","Philippines","Singapore","Thailand","Timor-Leste","Viet Nam"
+  ],
+  "Northern America": [
+    "Bermuda","Canada","Greenland","Saint Pierre and Miquelon","United States of America"
+  ],
+  "Latin America and the Caribbean": [
+    "Mexico","Belize","Costa Rica","El Salvador","Guatemala","Honduras","Nicaragua","Panama",
+    "Argentina","Bolivia","Brazil","Chile","Colombia","Ecuador","Guyana","Paraguay","Peru","Suriname","Uruguay","Venezuela",
+    "Cuba","Dominican Republic","Haiti","Jamaica","Puerto Rico","Trinidad and Tobago","Bahamas","Barbados","Grenada","Saint Lucia","Saint Vincent and the Grenadines"
+  ],
+  "Oceania": [
+    "Australia","New Zealand","Fiji","Papua New Guinea","Samoa","Tonga","Vanuatu","Solomon Islands","Micronesia","Kiribati",
+    "Marshall Islands","Palau","Nauru","Tuvalu","Hawaii"
+  ]
+}
