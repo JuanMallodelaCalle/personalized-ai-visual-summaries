@@ -1,0 +1,126 @@
+You are a visual description expert. Create two concise, photorealistic portrait prompts for an AI image model, one for Speaker A and one for Speaker B, using ONLY the provided extended profiles.
+Do NOT invent facts beyond the profile. All visual details MUST be consistent with profile_struct (age, gender_identity, sexual_orientation, ethnicity, nationality, residence_country).
+Each prompt should be fully self-contained and comprehensible on its own.
+
+OUTPUT FORMAT (MANDATORY):
+Return ONLY the two final prompts, nothing else, in exactly this format:
+A_PROMPT: <prompt text for A>
+B_PROMPT: <prompt text for B>
+
+PROMPT CONTENT RULES:
+- Third person. Start with identity basics: age, gender identity, ethnicity (single label).
+- Portrait framing: centered upper-body or shoulders-up, square (1:1), neutral/soft lighting, photorealistic, sharp facial focus.
+- Reflect key facial/clothing features and accessories; mention hair/skin/eyes where visible. If mandatory head coverings apply (see below), hair must NOT be visible.
+- Background: softly blurred, realistic, with subtle hints inspired by the environment (no busy scenes).
+- Keep the prompt under 300 words per character.
+- Age-appropriate: minors (under 18) must be depicted in a non-sexualized, neutral style.
+
+CULTURAL/LEGAL ATTIRE (APPLY STRICTLY TO FEMALE OR TRANSGENDER FEMALE WHEN SPECIFIED):
+- If gender_identity is "female" OR "transgender female", AND residence_country is Iran → depict hijab (hair fully covered) and modest clothing.
+- If gender_identity is "female" OR "transgender female", AND residence_country is Afghanistan → depict niqab/burka or at minimum a hijab, consistent with strict dress norms.
+- If gender_identity is "female" OR "transgender female", AND residence_country is Saudi Arabia → use modest attire; abaya with headscarf is common and may be depicted, but it is not strictly mandatory. Prefer plausible social norms over stereotypes.
+
+COHERENCE EXAMPLES:
+- If the profile mentions hair color but a head covering is required, phrase it as “hair tucked under a hijab/niqab/abaya” without showing hair.
+- Styling should be culturally plausible given nationality/residence; avoid clichés and stereotypes.
+
+Now generate the two prompts based strictly on the following JSON profile:
+{
+  "dialogue_id": "persona_chat_8310",
+  "profiles": {
+    "A": {
+      "profile_struct": {
+        "age": 59,
+        "gender_identity": "female",
+        "sexual_orientation": "heterosexual",
+        "ethnicity": "North African & Middle Eastern (MENA) (Egypt, Morocco, Saudi Arabia, Iran, etc.)",
+        "nationality": "United States of America",
+        "residence_country": "United States of America"
+      },
+      "profile_narrative": {
+        "personal_data": [
+          "My name is Laleh Farahani and I am a 59-year-old woman of Iranian descent who holds American citizenship.",
+          "I live on the west coast of the United States, where I have settled into a relaxed lifestyle near the ocean.",
+          "I work part-time in event catering, often picking up drinks for gatherings and social functions.",
+          "In my free time I spend hours indulging in comfort foods and binge-watching television series.",
+          "I am currently single and committed to improving my health through gradual lifestyle changes."
+        ],
+        "visual_appearance": [
+          "I have thick, curly salt-and-pepper hair that I often pull back into a loose bun when I’m at home.",
+          "My skin has an olive tone reflecting my Middle Eastern heritage, and I have warm brown eyes that light up when I laugh.",
+          "I wear rectangular reading glasses with dark tortoiseshell frames, which I find both practical and stylish.",
+          "I favor comfortable, roomy clothing like soft sweaters and leggings, but I always add a quirky accessory like a colorful scarf.",
+          "I am on the shorter side with a curvy build that I’ve begun reshaping through portion control and light exercise."
+        ],
+        "environment": [
+          "I live in a cozy one-bedroom apartment overlooking the Pacific Ocean, with a small balcony where I sip iced tea while watching the waves.",
+          "My living room is dominated by a large flat-screen TV and a plush couch that I practically live on during my binge-watching marathons.",
+          "The kitchen counters are always strewn with snack bowls and empty soda cans, evidence of my enthusiastic snacking habits.",
+          "I keep a mini bar cart nearby stocked with beers and mixers, ready for impromptu karaoke nights with friends.",
+          "A stack of workout DVDs and a set of resistance bands lurk in the corner as reminders of my ongoing effort to get in shape."
+        ],
+        "personality_attitudes": [
+          "I’m a laid-back extrovert who loves a good laugh, even if it means pulling a harmless prank with a whoopee cushion now and then.",
+          "I’m self-deprecating but kind-hearted, often joking about my ‘gross’ habits to put others at ease.",
+          "I value camaraderie and genuine connections, and I’m always happy to pick up drinks or lift someone’s spirits.",
+          "Although I can be indulgent in my eating and TV habits, I’m committed to making steady progress toward healthier routines.",
+          "I believe life is too short to take too seriously, so I approach every evening out as an opportunity to make memories."
+        ],
+        "other_details": [
+          "I have a collection of novelty whoopee cushions that I break out for quick pranks whenever the moment feels right.",
+          "My go-to karaoke song is an 80s power ballad that always gets the crowd singing along at the bar.",
+          "I have a habit of narrating cooking shows out loud, even when I’m microwaving frozen meals late at night.",
+          "Every Friday, I send out a group text for an informal bar meet-up and I’m famous for bringing everyone’s first round of drinks.",
+          "I once attempted to learn basic Spanish through a cooking class, but I reverted to English when the recipes got too complicated."
+        ]
+      }
+    },
+    "B": {
+      "profile_struct": {
+        "age": 35,
+        "gender_identity": "female",
+        "sexual_orientation": "gay/lesbian",
+        "ethnicity": "North American (USA, Canada, Greenland, etc.)",
+        "nationality": "United States of America",
+        "residence_country": "United States of America"
+      },
+      "profile_narrative": {
+        "personal_data": [
+          "My name is Emma Carter, and I’m a 35-year-old female teacher and sports coach in the United States of America.",
+          "I hold American citizenship and live in a suburban community not far from the city limits.",
+          "I have a bachelor’s degree in elementary education and additional certification in girls’ sports coaching.",
+          "I am single and deeply invested in my work with sixth graders and in coaching the girls’ volleyball team after school.",
+          "Outside of school hours, I host karaoke nights at a local bar every Friday to blend my love of music with community engagement."
+        ],
+        "visual_appearance": [
+          "I have straight, shoulder-length blonde hair that I wear down or pull into a simple ponytail during practice sessions.",
+          "My skin is fair with a light sprinkling of freckles across my cheeks and the bridge of my nose.",
+          "I often wear sporty-rimmed glasses when grading papers, then switch to sleeker frames for my karaoke performances.",
+          "My typical attire includes athletic leggings or track pants with a team polo when coaching, and casual jeans or a flowy blouse for evenings out.",
+          "I have an athletic build and average height for a woman, with toned arms from years of demonstrating drills."
+        ],
+        "environment": [
+          "I live in a modest brick house with a small backyard where I hang laundry and host weekend barbecues for friends.",
+          "My classroom is decorated with student artwork, motivational posters, and neatly labeled bins of supplies.",
+          "At the community center gym, I always have my whistle, a set of stopwatches, and a stash of volleyballs in my coaching bag.",
+          "On bar nights, I set up on a small stage under colored lights, complete with a microphone stand and a ready playlist of karaoke tracks.",
+          "My kitchen counter often holds a bowl of fruit—apples and pears—despite my mild allergy to certain varieties."
+        ],
+        "personality_attitudes": [
+          "I’m energetic and nurturing, finding deep satisfaction in helping young students learn and grow.",
+          "I have a playful side that comes out during karaoke, where I belt out songs with enthusiastic abandon.",
+          "I’m patient by nature, though I’m honest when my sixth graders push boundaries with pranks or volleyball antics.",
+          "I value community involvement, which is why I combine teaching, coaching, and social evenings into a cohesive lifestyle.",
+          "I maintain a pragmatic approach to health, enjoying fresh fruit despite occasional allergic reactions and balancing treats with nutritious meals."
+        ],
+        "other_details": [
+          "I carry a detailed coaching planner everywhere, filled with practice drills, game strategies, and motivational quotes.",
+          "I challenge my students to crossword puzzles during downtime to keep their critical thinking sharp.",
+          "I crochet small matching team scarves as end-of-season gifts for my volleyball players.",
+          "My signature rallying cry is “Alright, team!” which I use to motivate both students and karaoke participants alike.",
+          "I once organized a school talent show fundraiser where I performed a duet with the principal on stage."
+        ]
+      }
+    }
+  }
+}
