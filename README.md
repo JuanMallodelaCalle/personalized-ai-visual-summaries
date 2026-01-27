@@ -1,8 +1,9 @@
-# Personalized AI Visual Summaries — DREAM Dataset
+# Personalized AI Visual Summaries - DREAM Dataset
 
 **Automatic generation and evaluation of personalized visual summaries for text-based dialogues.**
 
 This repository contains the full experimental pipeline developed for a Master’s Thesis focused on transforming persona-grounded text dialogues into coherent, personalized, and photorealistic visual narratives.  
+
 The main outcome of this work is **DREAM (Dialogue to REAlistic Multicultural image sequences)**, a multimodal and multicultural dataset linking dialogue text, enriched persona profiles, portraits, and dialogue-level image sequences.
 
 ---
@@ -33,6 +34,7 @@ The dataset is serialized using a **unified JSON schema** that integrates dialog
 ## Repository Structure
 
 The repository mirrors the conceptual stages of the pipeline:
+```
 personachat_ParlAI/        # PersonaChat preprocessing and cleaning
 ComperDial/                # ComperDial preprocessing and formatting
 
@@ -46,7 +48,7 @@ ComperDial/                # ComperDial preprocessing and formatting
 └─ 1000_Mallo.json         # Final mixed dialogue dataset
 
 api/                       # API helper scripts (LLM and image generation, no keys)
-
+```
 
 Large generated artifacts (mass prompts, images, logs, and intermediate outputs) are intentionally excluded from version control.  
 Each pipeline stage includes **small representative examples** for reproducibility and inspection.
