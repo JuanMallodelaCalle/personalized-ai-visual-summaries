@@ -73,7 +73,7 @@ Each pipeline stage includes **small representative examples** for reproducibili
 ## Methodology Summary
 
 <p align="center">
-  <img src="docs/pipeline_overview.png" width="600"/>
+  <img src="docs/pipeline_overview.PNG" width="600"/>
 </p>
 
 The pipeline follows a modular, scalable design:
