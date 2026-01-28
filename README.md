@@ -29,6 +29,9 @@ Each dialogue is enriched with:
 
 The dataset is serialized using a **unified JSON schema** that integrates dialogue text, persona information, prompts, and image identifiers, making it suitable for training, benchmarking, and interactive visualization.
 
+![Examples of synthetic persona portraits used to anchor character identity](docs/persona_portraits_examples.PNG)
+
+*All images are fully synthetic and shown for illustrative purposes only.*
 ---
 
 ## Repository Structure
@@ -56,6 +59,8 @@ Each pipeline stage includes **small representative examples** for reproducibili
 ---
 
 ## Methodology Summary
+
+![Overview of the DREAM pipeline](docs/pipeline_overview.PNG)
 
 The pipeline follows a modular, scalable design:
 
