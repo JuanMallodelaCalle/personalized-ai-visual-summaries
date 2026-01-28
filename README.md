@@ -33,14 +33,17 @@ The dataset is serialized using a **unified JSON schema** that integrates dialog
   <tr>
     <td><img src="docs/persona_chat_760_B.png" width="200"/></td>
     <td><img src="docs/persona_chat_4513_B.png" width="200"/></td>
+    <td><img src="docs/comper_dial_94_B.png" width="200"/></td>	
   </tr>
   <tr>
     <td><img src="docs/persona_chat_5744_B.png" width="200"/></td>
     <td><img src="docs/persona_chat_2917_B.png" width="200"/></td>
+    <td><img src="docs/persona_chat_2359_A.png" width="200"/></td>
   </tr>
 </table>
 
 <p><em>All images are fully synthetic and shown for illustrative purposes only.</em></p>
+
 ---
 
 ## Repository Structure
