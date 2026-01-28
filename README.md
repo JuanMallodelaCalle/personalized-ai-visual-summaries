@@ -72,7 +72,9 @@ Each pipeline stage includes **small representative examples** for reproducibili
 
 ## Methodology Summary
 
-![Overview of the DREAM pipeline](docs/pipeline_overview.PNG)
+<p align="center">
+  <img src="docs/pipeline_overview.png" width="600"/>
+</p>
 
 The pipeline follows a modular, scalable design:
 
