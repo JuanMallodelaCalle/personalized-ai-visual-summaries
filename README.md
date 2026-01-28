@@ -29,9 +29,18 @@ Each dialogue is enriched with:
 
 The dataset is serialized using a **unified JSON schema** that integrates dialogue text, persona information, prompts, and image identifiers, making it suitable for training, benchmarking, and interactive visualization.
 
-![Examples of synthetic persona portraits used to anchor character identity](docs/persona_portraits_examples.PNG)
+<table>
+  <tr>
+    <td><img src="docs/persona_chat_760_B.png" width="200"/></td>
+    <td><img src="docs/persona_chat_4513_B.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="docs/persona_chat_5744_B.png" width="200"/></td>
+    <td><img src="docs/persona_chat_2917_B.png" width="200"/></td>
+  </tr>
+</table>
 
-*All images are fully synthetic and shown for illustrative purposes only.*
+<p><em>All images are fully synthetic and shown for illustrative purposes only.</em></p>
 ---
 
 ## Repository Structure
