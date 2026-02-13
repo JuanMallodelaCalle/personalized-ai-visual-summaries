@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences"
+authors:
+  - family-names: D'Haro Enríquez
+    given-names: Luis Fernando
+  - family-names: Mallo de la Calle
+    given-names: Juan
+    email: juan.mallo@alumnos.upm.es
+message: "If you use the DREAM dataset or code, please cite the LREC 2026 paper."
+version: 1.0
+date-released: 2026

@@ -1,10 +1,31 @@
 # Personalized AI Visual Summaries - DREAM Dataset
 
+![Conference](https://img.shields.io/badge/Conference-LREC%202026-blue)
+
 **Automatic generation and evaluation of personalized visual summaries for text-based dialogues.**
 
 This repository contains the full experimental pipeline developed for a Master’s Thesis focused on transforming persona-grounded text dialogues into coherent, personalized, and photorealistic visual narratives.  
 
 The main outcome of this work is **DREAM (Dialogue to REAlistic Multicultural image sequences)**, a multimodal and multicultural dataset linking dialogue text, enriched persona profiles, portraits, and dialogue-level image sequences.
+
+---
+
+## 📄 Paper
+
+This work has been accepted at **LREC 2026**.
+
+If you use the DREAM dataset or the methodology described in this repository, please cite:
+```
+bibtex
+@inproceedings{mallo2026dream,
+  title     = {DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences},
+  author    = {D'Haro Enríquez, Luis Fernando and Mallo de la Calle, Juan},
+  booktitle = {Proceedings of the LREC 2026 Conference},
+  year      = {2026}
+}
+```
+
+The dataset and code in this repository correspond to the version described in the paper.
 
 ---
 
