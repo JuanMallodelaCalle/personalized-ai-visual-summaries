@@ -19,7 +19,7 @@ If you use the DREAM dataset or the methodology described in this repository, pl
 bibtex
 @inproceedings{mallo2026dream,
   title     = {DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences},
-  author    = {D'Haro Enríquez, Luis Fernando and Mallo de la Calle, Juan},
+  author    = {Mallo de la Calle, Juan and Estecha-Garitagoitia, Marcos and Córdoba, Ricardo and D'Haro, Luis Fernando},
   booktitle = {Proceedings of the LREC 2026 Conference},
   year      = {2026}
 }
@@ -150,6 +150,14 @@ Both evaluation pipelines are included in this repository with reproducible exam
 
 ---
 
+## Related Resources
+
+Hugging Face Dataset (75% subset):
+
+https://huggingface.co/datasets/JuanMallo/dream-75pct
+
+---
+
 ## Contact
 
 **Juan Mallo de la Calle**  
@@ -161,4 +169,4 @@ Master’s Thesis Project
 ## License
 
 This repository is released for academic and research purposes.  
-License to be specified.
+**CC-BY-NC-4.0**
