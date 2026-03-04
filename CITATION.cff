@@ -1,23 +1,17 @@
 cff-version: 1.2.0
 title: "DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences"
-
 message: "If you use the DREAM dataset, please cite the LREC 2026 paper."
-
 authors:
-  - family-names: "Mallo de la Calle"
-    given-names: "Juan"
-    email: "juan.mallo@alumnos.upm.es"
-  - family-names: "Estecha-Garitagoitia"
-    given-names: "Marcos"
-  - family-names: "Córdoba"
-    given-names: "Ricardo"
-  - family-names: "D'Haro"
-    given-names: "Luis Fernando"
-
+- family-names: "Mallo de la Calle"
+  given-names: "Juan"
+  email: "juan.mallo@alumnos.upm.es"
+- family-names: "Estecha-Garitagoitia"
+  given-names: "Marcos"
+- family-names: "Córdoba"
+  given-names: "Ricardo"
+- family-names: "D'Haro"
+  given-names: "Luis Fernando"
 version: "1.0"
 date-released: 2026
-
 license: "CC-BY-NC-4.0"
-
-repository-code: "https://github.com/JuanMallodelaCalle/personalized-ai-visual-summaries"
 url: "https://github.com/JuanMallodelaCalle/personalized-ai-visual-summaries"
