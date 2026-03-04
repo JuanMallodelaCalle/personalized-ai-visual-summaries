@@ -17,7 +17,7 @@ This work has been accepted at **LREC 2026**.
 **DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences**  
 Juan Mallo de la Calle, Marcos Estecha-Garitagoitia, Ricardo Córdoba, Luis Fernando D’Haro
 
-📄 Paper PDF: [paper/DREAM_LREC2026.pdf](paper/DREAM_LREC2026.pdf)
+📄 Paper PDF: [paper/LREC_2026_DREAM.pdf](paper/LREC_2026_DREAM.pdf)
 
 If you use the DREAM dataset or the methodology described in this repository, please cite:
 
