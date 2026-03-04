@@ -1,12 +1,12 @@
-# Personalized AI Visual Summaries - DREAM Dataset
+# DREAM: Dialogue to REAlistic Multicultural Image Sequences
 
 ![Conference](https://img.shields.io/badge/Conference-LREC%202026-blue)
+![License](https://img.shields.io/badge/License-CC--BY--NC--4.0-lightgrey)
+![Dataset](https://img.shields.io/badge/HuggingFace-DREAM%20dataset-yellow)
 
-**Automatic generation and evaluation of personalized visual summaries for text-based dialogues.**
+**Official repository for DREAM**, a multicultural multimodal dataset linking persona-grounded dialogues with photorealistic, storyboard-like image sequences.
 
-This repository contains the full experimental pipeline developed for a Master’s Thesis focused on transforming persona-grounded text dialogues into coherent, personalized, and photorealistic visual narratives.  
-
-The main outcome of this work is **DREAM (Dialogue to REAlistic Multicultural image sequences)**, a multimodal and multicultural dataset linking dialogue text, enriched persona profiles, portraits, and dialogue-level image sequences.
+This repository also contains the end-to-end generation and evaluation pipeline originally developed in a Master’s Thesis (Design and Implementation of Personalized AI-Generated Visual Summaries for Text Conversations, by Juan Mallo) and used to build DREAM.
 
 ---
 
@@ -14,18 +14,71 @@ The main outcome of this work is **DREAM (Dialogue to REAlistic Multicultural im
 
 This work has been accepted at **LREC 2026**.
 
+**DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences**  
+Juan Mallo de la Calle, Marcos Estecha-Garitagoitia, Ricardo Córdoba, Luis Fernando D’Haro
+
+📄 Paper PDF: [paper/DREAM_LREC2026.pdf](paper/DREAM_LREC2026.pdf)
+
 If you use the DREAM dataset or the methodology described in this repository, please cite:
-```
-bibtex
+
+```bibtex
 @inproceedings{mallo2026dream,
-  title     = {DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences},
-  author    = {Mallo de la Calle, Juan and Estecha-Garitagoitia, Marcos and Córdoba, Ricardo and D'Haro, Luis Fernando},
-  booktitle = {Proceedings of the LREC 2026 Conference},
-  year      = {2026}
+  title={DREAM: A Multicultural Multimodal Dataset Linking Dialogues and Realistic Image Sequences},
+  author={Mallo de la Calle, Juan and Estecha-Garitagoitia, Marcos and Córdoba, Ricardo and D'Haro, Luis Fernando},
+  booktitle={Proceedings of the LREC 2026 Conference},
+  year={2026}
+}
+```
+---
+
+## 🚀 Quick Start
+
+The DREAM dataset links persona-grounded dialogues with photorealistic image sequences and structured persona profiles.
+
+A simplified dialogue entry looks like:
+
+```json
+{
+  "dialogue_id": "persona_chat_8310",
+  "profiles": {
+    "A": {
+      "profile_struct": {...},
+      "profile_narrative": {...}
+    },
+    "B": {
+      "profile_struct": {...},
+      "profile_narrative": {...}
+    }
+  },
+  "dialogue": [
+    {"persona_id": "persona_chat_8310_A", "text_1": "..."},
+    {"persona_id": "persona_chat_8310_B", "text_2": "..."},
+    {"image_id": "persona_chat_8310_img_1"},
+    {"persona_id": "persona_chat_8310_A", "text_3": "..."}
+  ]
 }
 ```
 
-The dataset and code in this repository correspond to the version described in the paper.
+Each dialogue integrates:
+
+- persona profiles (structured + narrative)
+- dialogue turns
+- inserted image identifiers corresponding to generated scenes
+
+### Access the dataset
+
+A public subset of the DREAM dataset is available on Hugging Face:
+
+https://huggingface.co/datasets/JuanMallo/dream-75pct
+
+This subset contains **75% of the full DREAM dataset** and includes:
+
+- persona profiles
+- dialogue text
+- visual turn specifications
+- profile portraits and scene images
+
+The Hugging Face version is intended for **easy experimentation and benchmarking**, while this repository contains the **complete generation and evaluation pipeline** used to construct the dataset.
 
 ---
 
@@ -67,23 +120,46 @@ The dataset is serialized using a **unified JSON schema** that integrates dialog
 
 ---
 
+## Dataset Statistics
+
+The DREAM dataset includes the following components:
+
+- **1,000 dialogues**
+- **2,000 persona profiles** (two per dialogue)
+- **2,000 profile portraits**
+- **6,950 dialogue scene images**
+
+Dialogue sources:
+
+- **900 dialogues** from PersonaChat
+- **100 dialogues** from ComperDial
+
+Per-dialogue averages:
+
+- **14.6 dialogue turns**
+- **6.95 scene images**
+
+The dataset is designed to provide balanced demographic coverage across multiple age groups, gender identities, and appearance-based ethnicity clusters, enabling research on visual grounding, identity consistency, and bias analysis in multimodal dialogue systems.
+
+---
+
 ## Repository Structure
 
-The repository mirrors the conceptual stages of the pipeline:
+The repository is organized according to the main stages of the DREAM dataset generation pipeline:
 ```
-personachat_ParlAI/        # PersonaChat preprocessing and cleaning
-ComperDial/                # ComperDial preprocessing and formatting
+personachat_ParlAI/        # Preprocessing and cleaning scripts for the PersonaChat dataset obtained through ParlAI. This stage standardizes dialogue format, speaker labels, and text normalization.
+ComperDial/                # Preprocessing and formatting scripts for the ComperDial dataset before integration into DREAM.
 
-1000/                      # Final end-to-end pipeline (DREAM, 1000 dialogues)
-├─ config/                 # Demographic distributions and sampling priors
-├─ out_profile_extension/  # Persona expansion and structuring
-├─ out_profile_images_prompts/ # Profile portrait prompt generation
-├─ out_visual_turns/       # Visual turn selection and scene prompt generation
-├─ gradio/                 # Human evaluation interface
-├─ profile_eval_GPT/       # GPT-based automatic evaluation
-└─ 1000_Mallo.json         # Final mixed dialogue dataset
+1000/                      # Main dataset construction pipeline used to build the final DREAM dataset.
+├─ config/                 # Demographic distributions and sampling priors used during persona expansion.
+├─ out_profile_extension/  # Persona profiles expansion and structuring from the original persona sentences.
+├─ out_profile_images_prompts/ # Profile portrait prompt generation used to achieve identity-consistency.
+├─ out_visual_turns/       # Visual turn selection and scene prompt generation aligned with dialogue turns.
+├─ gradio/                 # Human evaluation interface.
+├─ profile_eval_GPT/       # GPT-based automatic evaluation.
+└─ 1000_Mallo.json         # Combined dialogue dataset (PersonaChat + ComperDial) used for DREAM construction.
 
-api/                       # API helper scripts (LLM and image generation, no keys)
+api/                       # Helper scripts used to interact with language models and image generation APIs. No API keys or credentials are included in the repository.
 ```
 
 Large generated artifacts (mass prompts, images, logs, and intermediate outputs) are intentionally excluded from version control.  
@@ -97,7 +173,7 @@ Each pipeline stage includes **small representative examples** for reproducibili
   <img src="docs/pipeline_overview.PNG" width="600"/>
 </p>
 
-The pipeline follows a modular, scalable design:
+The DREAM generation pipeline follows a modular and scalable design:
 
 1. **Dialogue standardization**
    - Cleaning and harmonization of PersonaChat and ComperDial.
@@ -161,8 +237,10 @@ https://huggingface.co/datasets/JuanMallo/dream-75pct
 ## Contact
 
 **Juan Mallo de la Calle**  
-Master’s Thesis Project  
 📧 juan.mallo@alumnos.upm.es
+
+Speech Technology and Machine Learning Group
+Universidad Politécnica de Madrid
 
 ---
 
